@@ -17,7 +17,7 @@ export const ChatProvider = ({children})=>{
 
     const {socket, axios} = useContext(AuthContext);
 
-    //function to get all users for sidebar
+    
     const getUsers = async()=>{
         try{
            const {data}= await axios.get("/api/messages/users");
@@ -32,7 +32,7 @@ export const ChatProvider = ({children})=>{
         }
     }
 
-    //function to get messages for selected user
+    
     const getMessages = async (userId)=>{
         try{
             const {data}= await axios.get(`/api/messages/${userId}`);
@@ -45,8 +45,6 @@ export const ChatProvider = ({children})=>{
         }
     }
     
-
-    //function to send message to selected user
     const sendMessage = async (messageData)=>{
         try {
             const {data}= await axios.post(`/api/messages/send/${selectedUser._id}`,messageData);
@@ -61,7 +59,7 @@ export const ChatProvider = ({children})=>{
         }
     }
 
-    //function to subscribe to messages for selected user
+
     const subscribeToMessages = async ()=>{
         if(!socket) return;
         socket.on("newMessage", (newMessage)=>{
@@ -79,7 +77,6 @@ export const ChatProvider = ({children})=>{
         })
     }
 
-    //function to unsubscribe from messages 
     const unsubscribeFromMessages = ()=>{
         if(socket) socket.off("newMessage");
     }

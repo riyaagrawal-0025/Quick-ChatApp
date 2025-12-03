@@ -22,7 +22,7 @@ const ChatConatainer = () => {
 
   }
 
-  //Handle sending an image
+  
   const handleSendImage =async (e)=>{
     const file = e.target.files[0];
     if(!file || !file.type.startsWith("image/")){
